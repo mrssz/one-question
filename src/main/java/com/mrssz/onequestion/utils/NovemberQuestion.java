@@ -6,8 +6,7 @@ public class NovemberQuestion {
     }
 
     /*
-     * 给定一个字符串，返回 “反转后的” 字符串，仅仅反转字母
-     * 思针
+     * 反转字符串，仅仅反转字母
      */
     public static String reverseOnlyLetters(String S) {
         StringBuilder ans = new StringBuilder();
@@ -23,4 +22,24 @@ public class NovemberQuestion {
         }
         return ans.toString();
     }
+
+    /**
+     * 二分查找 寻找旋转排序数组中的最小值
+     */
+    public int minArray(int[] numbers) {
+        int low = 0;
+        int high = numbers.length - 1;
+        while (low < high) {
+            int pivot = low + (high - low) / 2;
+            if (numbers[pivot] < numbers[high]) {
+                high = pivot;
+            } else if (numbers[pivot] > numbers[high]) {
+                low = pivot + 1;
+            } else {
+                high -= 1;
+            }
+        }
+        return numbers[low];
+    }
+
 }
