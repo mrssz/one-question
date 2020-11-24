@@ -6,6 +6,7 @@ import java.util.Map;
 public class NovemberQuestion {
     public static void main(String[] args) {
         System.out.println(reverseOnlyLetters("a-bC-dEf-ghIj"));
+        System.out.println(freqAlphabets("10#11#12"));
     }
 
     /*
@@ -61,6 +62,24 @@ public class NovemberQuestion {
         }
 
         return ans;
+    }
+
+    public static String freqAlphabets(String s) {
+        char[] alphabetChars = new char[27];
+        for (int i = 1; i < alphabetChars.length; i++) {
+            alphabetChars[i] = (char) (96 + i);
+        }
+        StringBuilder builder = new StringBuilder();
+        char[] chars = s.toharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (i < chars.length - 2 && chars[i + 2] == '#') {
+                builder.append(alphabetChars[(chars[i] - '0') * 10 + (chars[i + 1] - '0')]);
+                i += 2;
+            } else {
+                builder.append(alphabetChars[chars[i] - '0']);
+            }
+        }
+        return builder.toString();
     }
 
 }
